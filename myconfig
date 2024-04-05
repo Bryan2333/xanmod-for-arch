@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+# 和Arch官方保持一致
+scripts/config --disable CONFIG_COMEDI
+
+# 为Dae开启eBPF
+scripts/config --enable CONFIG_DEBUG_INFO
+scripts/config --disable CONFIG_DEBUG_INFO_REDUCED
+scripts/config --enable CONFIG_DEBUG_INFO_BTF
+scripts/config --enable CONFIG_KPROBES
+scripts/config --enable CONFIG_KPROBE_EVENTS
+scripts/config --enable CONFIG_FTRACE
+scripts/config --enable CONFIG_BPF
+scripts/config --enable CONFIG_BPF_SYSCALL
+scripts/config --enable CONFIG_BPF_JIT
+scripts/config --enable CONFIG_BPF_STREAM_PARSER
+scripts/config --enable CONFIG_NET_CLS_ACT
+scripts/config --module CONFIG_NET_SCH_INGRESS
+scripts/config --enable CONFIG_NET_INGRESS
+scripts/config --enable CONFIG_NET_EGRESS
+scripts/config --enable CONFIG_NET_CLS_BPF
+scripts/config --enable CONFIG_XDP_SOCKETS
+scripts/config --enable CONFIG_IPV6_SEG6_BPF
+scripts/config --module CONFIG_TEST_BPF
+scripts/config --enable CONFIG_BPF_EVENTS
+
+# TTY中文显示
+scripts/config --enable CONFIG_FONT_CJK_16x16
+scripts/config --enable CONFIG_FONT_CJK_32x32
+
+# 修改Zswap参数
+scripts/config --enable CONFIG_ZSWAP_DEFAULT_ON
+scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+scripts/config --enable CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC
